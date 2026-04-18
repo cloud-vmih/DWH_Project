@@ -1,1 +1,16 @@
 Dataset/
+# Visual Studio temporary files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# SSIS/MS Build outputs
+bin/
+obj/
+Development/
+
+# Temporary files
+*.tmp
+*.log

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="ShopeeThailandDW"
+  DTS:DTSID="{7965A5B3-87CC-4D03-AE24-BEF7C7E9A9EA}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=PCOFCLOUD\SQL2025;Initial Catalog=ShopeeThailandDW;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Extract_Customers_Sessions-{7965A5B3-87CC-4D03-AE24-BEF7C7E9A9EA}PCOFCLOUD\SQL2025.ShopeeThailandDW;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
