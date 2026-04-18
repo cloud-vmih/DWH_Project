@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<BuildLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ProjectInfo>
+    <Name>ShopeeTH_ETL</Name>
+    <LastWriteTime>2026-04-18T07:29:53.4606435Z</LastWriteTime>
+    <LastKnownProtectionLevel>EncryptSensitiveWithPassword</LastKnownProtectionLevel>
+    <Salt>pnImGuHt</Salt>
+    <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAArVVMZtr9YUWm9H4MS0FLwAAAAAACAAAAAAAQZgAAAAEAACAAAABnzXkOkKBxmulU+Pv7RhSJHZdoNszB3jGYh+sYP0xu2QAAAAAOgAAAAAIAACAAAAD2UlQNnGuCtPRHMA8ltTlBaLwHS9mk8wuNvfKzlpkCRzAAAAD06eP508kWdGcG+bHe15gUhKeTlDKK+5MaQY+pOG0soO96tQ+QKE5uc0wOUIfTpQlAAAAAqMo8+//AMmD7LaIgD0RiODF9f15zshNAUs+fZ5zRP0T8h6fIpXhxA2jZE8K7lWoG7HHkurv2j9D3KE999WSogw==</LastKnownProtectedHashedPassword>
+  </ProjectInfo>
+  <LastBuildInfos>
+    <ProjectBuildItemInfo>
+      <Name>Extract_Products_Orders.dtsx</Name>
+      <LastWriteTime>2026-04-18T07:13:20.5459982Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithPassword</LastKnownProtectionLevel>
+      <Salt>RF0eM/br</Salt>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAArVVMZtr9YUWm9H4MS0FLwAAAAAACAAAAAAAQZgAAAAEAACAAAAB42fOXdkcc3BT/ih41jfOGSrFwKUnnJjL4W9iZKbhC/QAAAAAOgAAAAAIAACAAAAAW05a8t1FKo3cGGZUn70rVKSXqG5zkDh2lyvQmK6gXhTAAAADK5Lr6jWfFpHhxaCZziHqhgzjosL31g4WUl/TJhrQYLqbWtLw4PBOPh917cOgL1spAAAAAo05/d2m2QqPOO6S5rq/lSzUIGrkCNCg0nocvE3rTobKgt9HGzJx9D+gyo+p4ICLRYwXBcBlqlAs/Mcl6DNCQNA==</LastKnownProtectedHashedPassword>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Load_Dim_Product.dtsx</Name>
+      <LastWriteTime>2026-04-18T08:29:59.7153536Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithPassword</LastKnownProtectionLevel>
+      <Salt>fzZ0//Wn</Salt>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAArVVMZtr9YUWm9H4MS0FLwAAAAAACAAAAAAAQZgAAAAEAACAAAABl0Zg8L1fN4fJstRM34R+hZJsN4EoBkUTfF1HSjEHGcAAAAAAOgAAAAAIAACAAAAAurdO+ms4pghEj1PQI5a/y1dWZnJ+jN4f+XQRDh5Pl7TAAAAAyOcQJvHR5r56c3n8ymXvUuLVj0HocNZB8NtNFVri59aYFKHJqIsYgq5s3Wi9Uf4dAAAAAxu5PihlEnx5YBSB8BVWeLIxxS2sy+ARHs/saWic+63USGQECDHUHCb8mt0p9Xf26lIditQkalQecoL53bfg3xQ==</LastKnownProtectedHashedPassword>
+    </ProjectBuildItemInfo>
+  </LastBuildInfos>
+</BuildLog>
