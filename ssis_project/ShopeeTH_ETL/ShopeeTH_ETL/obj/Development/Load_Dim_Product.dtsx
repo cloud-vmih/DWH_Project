@@ -1,0 +1,2502 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/18/2026 2:22:26 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-63CK48TH"
+  DTS:CreatorName="LAPTOP-63CK48TH\Thanh Truc"
+  DTS:DTSID="{DB34819D-741D-495E-AE7D-DD791C210369}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1016.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="2"
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{FC955B62-9EA4-4AA4-B8A2-DE161E96468F}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.ShopeeThailandDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{006BF955-BE7D-4B4C-A2F8-8ED65A3F86F7}"
+      DTS:ObjectName="localhost.ShopeeThailandDW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=ShopeeThailandDW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{006BF955-BE7D-4B4C-A2F8-8ED65A3F86F7}localhost.ShopeeThailandDW;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT - Load dim_product (SCD Type 1)"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{65CF8492-0BF4-4282-A3FA-A2FCF8A629EA}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT - Load dim_product (SCD Type 1)"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Inputs[Conditional Split Input].Columns[commission_rate]"
+                      cachedDataType="numeric"
+                      cachedName="commission_rate"
+                      cachedPrecision="5"
+                      cachedScale="2"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[commission_rate]" />
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Inputs[Conditional Split Input].Columns[weight]"
+                      cachedDataType="numeric"
+                      cachedName="weight"
+                      cachedPrecision="10"
+                      cachedScale="3"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[weight]" />
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Inputs[Conditional Split Input].Columns[existing_weight]"
+                      cachedDataType="numeric"
+                      cachedName="existing_weight"
+                      cachedPrecision="10"
+                      cachedScale="3"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_weight]" />
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Inputs[Conditional Split Input].Columns[existing_commission_rate]"
+                      cachedDataType="numeric"
+                      cachedName="existing_commission_rate"
+                      cachedPrecision="5"
+                      cachedScale="2"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_commission_rate]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Outputs[Is_Changed]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Is_Changed"
+                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[weight]} != #{Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_weight]} || #{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[commission_rate]} != #{Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_commission_rate]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">weight != existing_weight || commission_rate != existing_commission_rate</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Outputs[Unchanged]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Unchanged"
+                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Load dim_product (SCD Type 1)\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT - Load dim_product (SCD Type 1)\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load dim_product (SCD Type 1)\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 1)\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Derived Column.Outputs[Derived Column Output].Columns[lkp_category_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Derived Column.Outputs[Derived Column Output].Columns[lkp_category_key]"
+                      name="lkp_category_key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">NULL(DT_I4)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">NULL(DT_I4)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Load dim_product (SCD Type 1)\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 1)\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup  dim_product_category"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [gold].[dim_product_category]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [gold].[dim_product_category]) [refTable]
+where [refTable].[category_name] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="category_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="category_name" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[category]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.ShopeeThailandDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.ShopeeThailandDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Inputs[Lookup Input].Columns[category]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="category"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[category]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">category_name</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Outputs[Lookup Match Output].Columns[lkp_category_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Outputs[Lookup Match Output].Columns[lkp_category_key]"
+                      name="lkp_category_key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">category_key</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup dim_product"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [gold].[dim_product]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [gold].[dim_product]) [refTable]
+where [refTable].[product_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="product_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="product_id" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="product_name" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="category_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="weight" dataType="DT_NUMERIC" length="0" precision="10" scale="3" codePage="0"/&gt;&lt;referenceColumn name="maintenance_rate" dataType="DT_NUMERIC" length="0" precision="5" scale="2" codePage="0"/&gt;&lt;referenceColumn name="commission_rate" dataType="DT_NUMERIC" length="0" precision="5" scale="2" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[product_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.ShopeeThailandDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.ShopeeThailandDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Inputs[Lookup Input].Columns[product_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="product_id"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[product_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">product_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_weight]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_weight]"
+                      name="existing_weight"
+                      precision="10"
+                      scale="3"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">weight</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_commission_rate]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_commission_rate]"
+                      name="existing_commission_rate"
+                      precision="5"
+                      scale="2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">commission_rate</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE gold.dim_product
+SET product_name = ?, weight = ?, maintenance_rate = ?, commission_rate = ?
+WHERE product_key = ?;</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.ShopeeThailandDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.ShopeeThailandDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input].Columns[product_name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="product_name"
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[product_name]" />
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input].Columns[weight]"
+                      cachedDataType="numeric"
+                      cachedName="weight"
+                      cachedPrecision="10"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[weight]" />
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input].Columns[maintenance_rate]"
+                      cachedDataType="numeric"
+                      cachedName="maintenance_rate"
+                      cachedPrecision="5"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[maintenance_rate]" />
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input].Columns[commission_rate]"
+                      cachedDataType="numeric"
+                      cachedName="commission_rate"
+                      cachedPrecision="5"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[commission_rate]" />
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input].Columns[lkp_category_key]"
+                      cachedDataType="i4"
+                      cachedName="lkp_category_key"
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[lkp_category_key]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="100"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="numeric"
+                      name="Param_1"
+                      precision="10"
+                      scale="3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="numeric"
+                      name="Param_2"
+                      precision="5"
+                      scale="2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="numeric"
+                      name="Param_3"
+                      precision="5"
+                      scale="2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      dataType="i4"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[gold].[dim_product]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.ShopeeThailandDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.ShopeeThailandDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[product_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="product_id"
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_id]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[product_id]" />
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[product_name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="product_name"
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_name]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[product_name]" />
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[maintenance_rate]"
+                      cachedDataType="numeric"
+                      cachedName="maintenance_rate"
+                      cachedPrecision="5"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[maintenance_rate]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[maintenance_rate]" />
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[commission_rate]"
+                      cachedDataType="numeric"
+                      cachedName="commission_rate"
+                      cachedPrecision="5"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[commission_rate]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[commission_rate]" />
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[weight]"
+                      cachedDataType="numeric"
+                      cachedName="weight"
+                      cachedPrecision="10"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[weight]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[weight]" />
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[lkp_category_key]"
+                      cachedDataType="i4"
+                      cachedName="lkp_category_key"
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[category_key]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[lkp_category_key]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_key]"
+                      dataType="i4"
+                      name="product_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="product_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_name]"
+                      dataType="wstr"
+                      length="100"
+                      name="product_name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[category_key]"
+                      dataType="i4"
+                      name="category_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[weight]"
+                      dataType="numeric"
+                      name="weight"
+                      precision="10"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[maintenance_rate]"
+                      dataType="numeric"
+                      name="maintenance_rate"
+                      precision="5"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[commission_rate]"
+                      dataType="numeric"
+                      name="commission_rate"
+                      precision="5"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[staging].[stg_products]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT
+    product_id,
+    product_name,
+    category,
+    weight,
+    maintenance_rate,
+    commission_rate
+FROM staging.stg_products;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.ShopeeThailandDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.ShopeeThailandDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_id]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_id]"
+                      length="50"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_id]"
+                      name="product_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[category]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[category]"
+                      length="100"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[category]"
+                      name="category"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_name]"
+                      length="100"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_name]"
+                      name="product_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[maintenance_rate]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[maintenance_rate]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[maintenance_rate]"
+                      name="maintenance_rate"
+                      precision="5"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[commission_rate]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[commission_rate]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[commission_rate]"
+                      name="commission_rate"
+                      precision="5"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[weight]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[weight]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[weight]"
+                      name="weight"
+                      precision="10"
+                      scale="3"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="product_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[category]"
+                      dataType="wstr"
+                      length="100"
+                      name="category" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_name]"
+                      dataType="wstr"
+                      length="100"
+                      name="product_name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[maintenance_rate]"
+                      dataType="numeric"
+                      name="maintenance_rate"
+                      precision="5"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[commission_rate]"
+                      dataType="numeric"
+                      name="commission_rate"
+                      precision="5"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[weight]"
+                      dataType="numeric"
+                      name="weight"
+                      precision="10"
+                      scale="3" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_id]"
+                      name="product_id" />
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[category]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[category]"
+                      name="category" />
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_name]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_name]"
+                      name="product_name" />
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[maintenance_rate]"
+                      dataType="numeric"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[maintenance_rate]"
+                      name="maintenance_rate"
+                      precision="5"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[commission_rate]"
+                      dataType="numeric"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[commission_rate]"
+                      name="commission_rate"
+                      precision="5"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[weight]"
+                      dataType="numeric"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[weight]"
+                      name="weight"
+                      precision="10"
+                      scale="3" />
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Load dim_product (SCD Type 1)\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 1].Columns[product_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="product_id"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[product_id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 1].Columns[category]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="category"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[category]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[category]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 1].Columns[product_name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="product_name"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[product_name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 1].Columns[maintenance_rate]"
+                      cachedDataType="numeric"
+                      cachedName="maintenance_rate"
+                      cachedPrecision="5"
+                      cachedScale="2"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[maintenance_rate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[maintenance_rate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 1].Columns[commission_rate]"
+                      cachedDataType="numeric"
+                      cachedName="commission_rate"
+                      cachedPrecision="5"
+                      cachedScale="2"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[commission_rate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[commission_rate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 1].Columns[weight]"
+                      cachedDataType="numeric"
+                      cachedName="weight"
+                      cachedPrecision="10"
+                      cachedScale="3"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[weight]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[weight]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 1].Columns[lkp_category_key]"
+                      cachedDataType="i4"
+                      cachedName="lkp_category_key"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Outputs[Lookup Match Output].Columns[lkp_category_key]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[lkp_category_key]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 2].Columns[product_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="product_id"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[product_id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 2].Columns[category]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="category"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[category]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[category]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 2].Columns[product_name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="product_name"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[product_name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 2].Columns[maintenance_rate]"
+                      cachedDataType="numeric"
+                      cachedName="maintenance_rate"
+                      cachedPrecision="5"
+                      cachedScale="2"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[maintenance_rate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[maintenance_rate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 2].Columns[commission_rate]"
+                      cachedDataType="numeric"
+                      cachedName="commission_rate"
+                      cachedPrecision="5"
+                      cachedScale="2"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[commission_rate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[commission_rate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 2].Columns[weight]"
+                      cachedDataType="numeric"
+                      cachedName="weight"
+                      cachedPrecision="10"
+                      cachedScale="3"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[weight]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[weight]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 2].Columns[lkp_category_key]"
+                      cachedDataType="i4"
+                      cachedName="lkp_category_key"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Derived Column.Outputs[Derived Column Output].Columns[lkp_category_key]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[lkp_category_key]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[product_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[product_id]"
+                      name="product_id" />
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[category]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[category]"
+                      name="category" />
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[product_name]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[product_name]"
+                      name="product_name" />
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[maintenance_rate]"
+                      dataType="numeric"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[maintenance_rate]"
+                      name="maintenance_rate"
+                      precision="5"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[commission_rate]"
+                      dataType="numeric"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[commission_rate]"
+                      name="commission_rate"
+                      precision="5"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[weight]"
+                      dataType="numeric"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[weight]"
+                      name="weight"
+                      precision="10"
+                      scale="3" />
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[lkp_category_key]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[lkp_category_key]"
+                      name="lkp_category_key" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT - Load dim_product (SCD Type 1).Paths[Derived Column Output]"
+              endId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 2]"
+              name="Derived Column Output"
+              startId="Package\DFT - Load dim_product (SCD Type 1)\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT - Load dim_product (SCD Type 1).Paths[Lookup Match Output]"
+              endId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 1]"
+              name="Lookup Match Output"
+              startId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT - Load dim_product (SCD Type 1).Paths[Lookup Match Output1]"
+              endId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Inputs[Conditional Split Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT - Load dim_product (SCD Type 1).Paths[Lookup No Match Output]"
+              endId="Package\DFT - Load dim_product (SCD Type 1)\Derived Column.Inputs[Derived Column Input]"
+              name="Lookup No Match Output"
+              startId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\DFT - Load dim_product (SCD Type 1).Paths[Lookup No Match Output1]"
+              endId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\DFT - Load dim_product (SCD Type 1).Paths[OLE DB Source Output]"
+              endId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT - Load dim_product (SCD Type 1).Paths[Unchanged]"
+              endId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Unchanged"
+              startId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Outputs[Unchanged]" />
+            <path
+              refId="Package\DFT - Load dim_product (SCD Type 1).Paths[Union All Output 1]"
+              endId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Inputs[Lookup Input]"
+              name="Union All Output 1"
+              startId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT - Load dim_product_category (SCD Type 1)"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{90243532-D079-499C-98F8-622A61BA4F55}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT - Load dim_product_category (SCD Type 1)"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT - Load dim_product_category (SCD Type 1)\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [gold].[dim_product_category]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [gold].[dim_product_category]) [refTable]
+where [refTable].[category_name] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="category_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="category_name" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[category]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load dim_product_category (SCD Type 1)\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.ShopeeThailandDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.ShopeeThailandDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Load dim_product_category (SCD Type 1)\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product_category (SCD Type 1)\Lookup.Inputs[Lookup Input].Columns[category]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="category"
+                      lineageId="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[category]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">category_name</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load dim_product_category (SCD Type 1)\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT - Load dim_product_category (SCD Type 1)\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product_category (SCD Type 1)\Lookup.Outputs[Lookup Match Output].Columns[lkp_category_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT - Load dim_product_category (SCD Type 1)\Lookup.Outputs[Lookup Match Output].Columns[lkp_category_key]"
+                      name="lkp_category_key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">category_key</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Load dim_product_category (SCD Type 1)\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT - Load dim_product_category (SCD Type 1)\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Load dim_product_category (SCD Type 1)\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT - Load dim_product_category (SCD Type 1)\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product_category (SCD Type 1)\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load dim_product_category (SCD Type 1)\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product_category (SCD Type 1)\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load dim_product_category (SCD Type 1)\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[gold].[dim_product_category]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.ShopeeThailandDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.ShopeeThailandDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[category]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="category"
+                      externalMetadataColumnId="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[category_name]"
+                      lineageId="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[category]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[category_key]"
+                      dataType="i4"
+                      name="category_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[category_name]"
+                      dataType="wstr"
+                      length="100"
+                      name="category_name" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT DISTINCT category FROM staging.stg_products
+WHERE category IS NOT NULL;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.ShopeeThailandDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.ShopeeThailandDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[category]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[category]"
+                      length="100"
+                      lineageId="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[category]"
+                      name="category"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[category]"
+                      dataType="wstr"
+                      length="100"
+                      name="category" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[category]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[category]"
+                      name="category" />
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT - Load dim_product_category (SCD Type 1).Paths[Lookup No Match Output]"
+              endId="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\DFT - Load dim_product_category (SCD Type 1)\Lookup.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\DFT - Load dim_product_category (SCD Type 1).Paths[OLE DB Source Output]"
+              endId="Package\DFT - Load dim_product_category (SCD Type 1)\Lookup.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EST - Populate dim_product_category"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{2FCDAE6B-B0E9-47E4-980E-FD09FC869273}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EST - Populate dim_product_category"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{006BF955-BE7D-4B4C-A2F8-8ED65A3F86F7}"
+          SQLTask:SqlStatementSource="IF NOT EXISTS (SELECT 1 FROM gold.dim_product_category)&#xA;BEGIN&#xA;    INSERT INTO gold.dim_product_category (category_name)&#xA;    SELECT DISTINCT category FROM staging.stg_products&#xA;    WHERE category IS NOT NULL&#xA;    ORDER BY category;&#xA;END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{05B1F64B-1EF0-46D1-A9EA-053BC68762D6}"
+      DTS:From="Package\EST - Populate dim_product_category"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DFT - Load dim_product_category (SCD Type 1)" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{5E8DFDAE-BA1F-47D5-9500-310441762241}"
+      DTS:From="Package\DFT - Load dim_product_category (SCD Type 1)"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DFT - Load dim_product (SCD Type 1)" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="256.8,41.6"
+          Id="Package\EST - Populate dim_product_category"
+          TopLeft="267.85714342734,135.352941057828" />
+        <NodeLayout
+          Size="305.6,41.6"
+          Id="Package\DFT - Load dim_product_category (SCD Type 1)"
+          TopLeft="241.42857194251,253.882352718639" />
+        <NodeLayout
+          Size="259.2,41.6"
+          Id="Package\DFT - Load dim_product (SCD Type 1)"
+          TopLeft="271.428572006371,369.352940852718" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="395.242857684925,176.952941057828">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,76.9294116608103"
+              Start="0,0"
+              End="0,69.4294116608103">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,69.4294116608103" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="397.62857197444,295.482352718639">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,73.8705881340797"
+              Start="0,0"
+              End="0,66.3705881340797">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,66.3705881340797" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT - Load dim_product_category (SCD Type 1)">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Source"
+          TopLeft="300.000000638621,123.117646950906" />
+        <NodeLayout
+          Size="112.8,41.6"
+          Id="Package\DFT - Load dim_product_category (SCD Type 1)\Lookup"
+          TopLeft="317.142857817971,227.882352741429" />
+        <EdgeLayout
+          Id="Package\DFT - Load dim_product_category (SCD Type 1).Paths[OLE DB Source Output]"
+          TopLeft="374.171429228296,164.717646950906">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,63.1647057905226"
+              Start="0,0"
+              End="0,55.6647057905226">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.6647057905226" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Destination"
+          TopLeft="291.428572048946,327.294117360173" />
+        <EdgeLayout
+          Id="Package\DFT - Load dim_product_category (SCD Type 1).Paths[Lookup No Match Output]"
+          TopLeft="375.085714933459,269.482352741429">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57.8117646187439"
+              Start="0,0"
+              End="0,50.3117646187439">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.3117646187439" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,19.3511948093719,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\DFT - Load dim_product (SCD Type 1)">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source"
+          TopLeft="327.999995112419,145.333331167698" />
+        <NodeLayout
+          Size="224.8,41.6"
+          Id="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category"
+          TopLeft="274.999995902181,228.333329930902" />
+        <EdgeLayout
+          Id="Package\DFT - Load dim_product (SCD Type 1).Paths[OLE DB Source Output]"
+          TopLeft="402.799995112419,186.933331167698">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-15.3999992102385,41.3999987632036"
+              Start="0,0"
+              End="-15.3999992102385,33.8999987632036">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.6999993816018" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.6999993816018"
+                    Point2="0,20.6999993816018"
+                    Point3="-4,20.6999993816018" />
+                  <mssgle:LineSegment
+                    End="-11.3999992102385,20.6999993816018" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-11.3999992102385,20.6999993816018"
+                    Point2="-15.3999992102385,20.6999993816018"
+                    Point3="-15.3999992102385,24.6999993816018" />
+                  <mssgle:LineSegment
+                    End="-15.3999992102385,33.8999987632036" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\DFT - Load dim_product (SCD Type 1)\Derived Column"
+          TopLeft="126.666664779186,356.666661351919" />
+        <EdgeLayout
+          Id="Package\DFT - Load dim_product (SCD Type 1).Paths[Lookup No Match Output]"
+          TopLeft="351.266662568847,269.933329930902">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-148.199997789661,86.7333314210176"
+              Start="0,0"
+              End="-148.199997789661,79.2333314210176">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.0611064118884" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.0611064118884"
+                    Point2="0,35.0611064118884"
+                    Point3="-4,35.0611064118884" />
+                  <mssgle:LineSegment
+                    End="-144.199997789661,35.0611064118884" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-144.199997789661,35.0611064118884"
+                    Point2="-148.199997789661,35.0611064118884"
+                    Point3="-148.199997789661,39.0611064118884" />
+                  <mssgle:LineSegment
+                    End="-148.199997789661,79.2333314210176" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-129.906385613581,40.0611064118884,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\DFT - Load dim_product (SCD Type 1)\Union All"
+          TopLeft="524.166658855974,355.833328031003" />
+        <EdgeLayout
+          Id="Package\DFT - Load dim_product (SCD Type 1).Paths[Lookup Match Output]"
+          TopLeft="423.533329235514,269.933329930902">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="160.633329620461,85.8999981001019"
+              Start="0,0"
+              End="160.633329620461,78.3999981001019">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.7242395146702" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.7242395146702"
+                    Point2="0,34.7242395146702"
+                    Point3="4,34.7242395146702" />
+                  <mssgle:LineSegment
+                    End="156.633329620461,34.7242395146702" />
+                  <mssgle:CubicBezierSegment
+                    Point1="156.633329620461,34.7242395146702"
+                    Point2="160.633329620461,34.7242395146702"
+                    Point3="160.633329620461,38.7242395146702" />
+                  <mssgle:LineSegment
+                    End="160.633329620461,78.3999981001019" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="32.1252780914803,39.7242395146702,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - Load dim_product (SCD Type 1).Paths[Derived Column Output]"
+          TopLeft="279.466664779186,377.049994691461">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="244.699994076788,0"
+              Start="0,0"
+              End="237.199994076788,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="237.199994076788,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="154.4,41.6"
+          Id="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split"
+          TopLeft="196.666663736105,548.33332516253" />
+        <NodeLayout
+          Size="174.4,41.6"
+          Id="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product"
+          TopLeft="311.666662022471,441.66666008532" />
+        <EdgeLayout
+          Id="Package\DFT - Load dim_product (SCD Type 1).Paths[Union All Output 1]"
+          TopLeft="584.166658855974,397.433328031003">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-185.299996833503,44.233332054317"
+              Start="0,0"
+              End="-185.299996833503,36.733332054317">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.1166660271585" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.1166660271585"
+                    Point2="0,22.1166660271585"
+                    Point3="-4,22.1166660271585" />
+                  <mssgle:LineSegment
+                    End="-181.299996833503,22.1166660271585" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-181.299996833503,22.1166660271585"
+                    Point2="-185.299996833503,22.1166660271585"
+                    Point3="-185.299996833503,26.1166660271585" />
+                  <mssgle:LineSegment
+                    End="-185.299996833503,36.733332054317" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - Load dim_product (SCD Type 1).Paths[Lookup Match Output1]"
+          TopLeft="398.866662022471,483.26666008532">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-124.999998286366,65.0666650772095"
+              Start="0,0"
+              End="-124.999998286366,57.5666650772095">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5333325386048" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.5333325386048"
+                    Point2="0,32.5333325386048"
+                    Point3="-4,32.5333325386048" />
+                  <mssgle:LineSegment
+                    End="-120.999998286366,32.5333325386048" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-120.999998286366,32.5333325386048"
+                    Point2="-124.999998286366,32.5333325386048"
+                    Point3="-124.999998286366,36.5333325386048" />
+                  <mssgle:LineSegment
+                    End="-124.999998286366,57.5666650772095" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-110.691385861933,37.5333325386048,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination"
+          TopLeft="429.999993592501,554.333325907588" />
+        <EdgeLayout
+          Id="Package\DFT - Load dim_product (SCD Type 1).Paths[Lookup No Match Output1]"
+          TopLeft="426.599995355805,483.26666008532">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="88.5999982366959,71.0666658222676"
+              Start="0,0"
+              End="88.5999982366959,63.5666658222676">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.8143026879376" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.8143026879376"
+                    Point2="0,28.8143026879376"
+                    Point3="4,28.8143026879376" />
+                  <mssgle:LineSegment
+                    End="84.5999982366959,28.8143026879376" />
+                  <mssgle:CubicBezierSegment
+                    Point1="84.5999982366959,28.8143026879376"
+                    Point2="88.5999982366959,28.8143026879376"
+                    Point3="88.5999982366959,32.8143026879376" />
+                  <mssgle:LineSegment
+                    End="88.5999982366959,63.5666658222676" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-11.506387600402,33.8143026879376,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command"
+          TopLeft="192.499997131526,624.333325063189" />
+        <EdgeLayout
+          Id="Package\DFT - Load dim_product (SCD Type 1).Paths[Unchanged]"
+          TopLeft="274.383330433816,589.93332516253">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34.3999999006592"
+              Start="0,0"
+              End="0,26.8999999006592">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.8999999006592" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Load dim_product_category (SCD Type 1)\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[gold].[dim_product_category]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Load dim_product_category (SCD Type 1)\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[gold].[dim_product_category]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[gold].[dim_product]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
