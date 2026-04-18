@@ -12,11 +12,11 @@
   <DataSourceViews />
   <DeploymentModelSpecificContent>
     <Manifest>
-      <SSIS:Project SSIS:ProtectionLevel="EncryptSensitiveWithUserKey" xmlns:SSIS="www.microsoft.com/SqlServer/SSIS">
+      <SSIS:Project SSIS:ProtectionLevel="EncryptSensitiveWithPassword" xmlns:SSIS="www.microsoft.com/SqlServer/SSIS">
         <SSIS:Properties>
           <SSIS:Property SSIS:Name="ID">{64a8f4bf-0771-45aa-a2d2-bbf90c0f5607}</SSIS:Property>
           <SSIS:Property SSIS:Name="Name">ShopeeTH_ETL</SSIS:Property>
-          <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+          <SSIS:Property SSIS:Name="VersionMajor">0</SSIS:Property>
           <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
           <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
           <SSIS:Property SSIS:Name="VersionComments">
@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">PCOFCLOUD</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAJ6Q/P5dY20GNMv6nahSxOAAAAAACAAAAAAAQZgAAAAEAACAAAACdQ5bTcZC/7ibi/K3bPiqT6+KL5Q+tJCo1ztbyJiTbvQAAAAAOgAAAAAIAACAAAABLn4e1encpmh7GfFNL+PGs3iNa0IRVHN+V659igjsjKpAAAABQ7bvlCcjOUOqEEBzaXpTKLkDhMMOm2GQMLocrxjH9/AuQ76dvqwvVysmXHBN6/RRdW97JIJyKg3fOct2R8lAE7v5+tPp2Nc3FGBNTkaqqZSAttWtdGWBg2qh9JaZXe42k/LLfE5unMnzlbLvmhmtQ7YJcguxl91ImPDuOYKJDThTkbMgbwnHrMAPGtNm9rYtAAAAAry8dLyDax1P47EB1/PRe4JSfFRsYbI0CfN/dwmYKBm8de//UcFev67b7neOrSmaJs8ObgZOgFqmYrSYEMtN7Fw==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1" SSIS:Salt="GcAByKkk3v0=" SSIS:IV="FbyoJjMrWA+/Cl67IbEjvg==" SSIS:Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc">qZjGsjMC90rZSmaWgBoXWrfkYCTiW0FNSH4XfjpFPI/EImqYPcsvfKt8GiP6UFXr3u76TPYddwUmRiuWE/KCepJwAlumQpsId6QJsD/wh5bDJV9Xo9c56eoz2dKZpjtdVbDXEp7wYmSf9wsEFlekKH+blQWmkV15HoduCCV3Tv1PTAu/oiqhak4wAcFbMJGc</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
