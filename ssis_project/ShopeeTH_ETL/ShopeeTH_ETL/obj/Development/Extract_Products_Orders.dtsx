@@ -12,8 +12,8 @@
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="21"
-  DTS:VersionGUID="{0553F399-60BC-4AE2-8784-356FAA00F493}">
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{D6738C24-2C6E-4CA8-B9A3-A6F605069D4A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -307,7 +307,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="product_id"
-              DTS:DTSID="{F64AD8F7-93EB-4779-930F-2118CDDD5725}"
+              DTS:DTSID="{1EF6FCBB-7321-44C5-8D21-F69926C74EA4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -316,7 +316,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="seller_id"
-              DTS:DTSID="{A41FC31D-2AC0-4740-9F00-D691A7AE1FB6}"
+              DTS:DTSID="{A296193D-C67E-4800-86CC-02DF9348B915}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -325,7 +325,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="category"
-              DTS:DTSID="{6C24B92B-417B-4994-8296-F397F7C513CB}"
+              DTS:DTSID="{F16C9D18-D39B-49C4-98AD-95C69DA4FC27}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -334,7 +334,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="product_name"
-              DTS:DTSID="{CC2D63B4-5190-4481-8AB4-F07AFB339AE7}"
+              DTS:DTSID="{A5DD9628-1572-46E9-A170-A1AE8C1E1771}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -342,7 +342,7 @@
               DTS:DataType="14"
               DTS:TextQualified="True"
               DTS:ObjectName="maintenance_rate"
-              DTS:DTSID="{01D02C96-256C-4EB3-8C0C-CA351A0630B0}"
+              DTS:DTSID="{66E4F8D0-A237-47BF-BCA7-A7C30BD4476E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -350,7 +350,7 @@
               DTS:DataType="14"
               DTS:TextQualified="True"
               DTS:ObjectName="commission_rate"
-              DTS:DTSID="{29C1641E-6B80-4E9B-8AB5-3FD563920D14}"
+              DTS:DTSID="{5919AF5F-1E74-4B90-8F47-D662C65D4DF3}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -358,7 +358,7 @@
               DTS:DataType="14"
               DTS:TextQualified="True"
               DTS:ObjectName="weight"
-              DTS:DTSID="{96C8E83F-4715-4457-84D2-D9A3C1426F77}"
+              DTS:DTSID="{5325A559-7BE3-4683-BD4D-E54D31A0529A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -366,22 +366,22 @@
               DTS:DataType="133"
               DTS:TextQualified="True"
               DTS:ObjectName="created_at"
-              DTS:DTSID="{19F3AADA-63EE-4510-942B-FD3A9EA3461A}"
+              DTS:DTSID="{D0D61B79-AAA8-4A32-B9E3-0F692AB7ED2F}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[localhost.ShopeeThailandDWH]"
+      DTS:refId="Package.ConnectionManagers[localhost.ShopeeThailandDW]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{CA9E95CA-A41B-427C-89C2-5B9424DED4A8}"
-      DTS:ObjectName="localhost.ShopeeThailandDWH">
+      DTS:DTSID="{C8799E27-ACF3-4A20-88B4-8B1E57E559D6}"
+      DTS:ObjectName="localhost.ShopeeThailandDW">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Initial Catalog=ShopeeThailandDWH;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{CA9E95CA-A41B-427C-89C2-5B9424DED4A8}localhost.ShopeeThailandDWH;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=ShopeeThailandDW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{C8799E27-ACF3-4A20-88B4-8B1E57E559D6}localhost.ShopeeThailandDW;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -937,8 +937,8 @@
               <connections>
                 <connection
                   refId="Package\DFT - Load Order Items\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[localhost.ShopeeThailandDWH]"
-                  connectionManagerRefId="Package.ConnectionManagers[localhost.ShopeeThailandDWH]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.ShopeeThailandDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.ShopeeThailandDW]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -951,13 +951,13 @@
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[order_item_id]"
+                      refId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[product_id]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="order_item_id"
-                      externalMetadataColumnId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[order_item_id]"
-                      lineageId="Package\DFT - Load Order Items\Flat File Source.Outputs[Flat File Source Output].Columns[order_item_id]" />
+                      cachedName="product_id"
+                      externalMetadataColumnId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_id]"
+                      lineageId="Package\DFT - Load Order Items\Flat File Source.Outputs[Flat File Source Output].Columns[product_id]" />
                     <inputColumn
                       refId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[order_id]"
                       cachedCodepage="1252"
@@ -967,13 +967,19 @@
                       externalMetadataColumnId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[order_id]"
                       lineageId="Package\DFT - Load Order Items\Flat File Source.Outputs[Flat File Source Output].Columns[order_id]" />
                     <inputColumn
-                      refId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[product_id]"
+                      refId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[order_item_id]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="product_id"
-                      externalMetadataColumnId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_id]"
-                      lineageId="Package\DFT - Load Order Items\Flat File Source.Outputs[Flat File Source Output].Columns[product_id]" />
+                      cachedName="order_item_id"
+                      externalMetadataColumnId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[order_item_id]"
+                      lineageId="Package\DFT - Load Order Items\Flat File Source.Outputs[Flat File Source Output].Columns[order_item_id]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[unit_price]"
+                      cachedDataType="decimal"
+                      cachedName="unit_price"
+                      externalMetadataColumnId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[unit_price]"
+                      lineageId="Package\DFT - Load Order Items\Flat File Source.Outputs[Flat File Source Output].Columns[unit_price]" />
                     <inputColumn
                       refId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[quantity]"
                       cachedCodepage="1252"
@@ -982,24 +988,6 @@
                       cachedName="quantity"
                       externalMetadataColumnId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[quantity]"
                       lineageId="Package\DFT - Load Order Items\Flat File Source.Outputs[Flat File Source Output].Columns[quantity]" />
-                    <inputColumn
-                      refId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[unit_price]"
-                      cachedDataType="decimal"
-                      cachedName="unit_price"
-                      externalMetadataColumnId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[unit_price]"
-                      lineageId="Package\DFT - Load Order Items\Flat File Source.Outputs[Flat File Source Output].Columns[unit_price]" />
-                    <inputColumn
-                      refId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[commission_amount]"
-                      cachedDataType="decimal"
-                      cachedName="commission_amount"
-                      externalMetadataColumnId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[commission_amount]"
-                      lineageId="Package\DFT - Load Order Items\Flat File Source.Outputs[Flat File Source Output].Columns[commission_amount]" />
-                    <inputColumn
-                      refId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[maintenance_amount]"
-                      cachedDataType="decimal"
-                      cachedName="maintenance_amount"
-                      externalMetadataColumnId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[maintenance_amount]"
-                      lineageId="Package\DFT - Load Order Items\Flat File Source.Outputs[Flat File Source Output].Columns[maintenance_amount]" />
                     <inputColumn
                       refId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[unit_price_after_discount]"
                       cachedDataType="decimal"
@@ -1018,6 +1006,18 @@
                       cachedName="discount_percent"
                       externalMetadataColumnId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[discount_percent]"
                       lineageId="Package\DFT - Load Order Items\Flat File Source.Outputs[Flat File Source Output].Columns[discount_percent]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[commission_amount]"
+                      cachedDataType="decimal"
+                      cachedName="commission_amount"
+                      externalMetadataColumnId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[commission_amount]"
+                      lineageId="Package\DFT - Load Order Items\Flat File Source.Outputs[Flat File Source Output].Columns[commission_amount]" />
+                    <inputColumn
+                      refId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[maintenance_amount]"
+                      cachedDataType="decimal"
+                      cachedName="maintenance_amount"
+                      externalMetadataColumnId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[maintenance_amount]"
+                      lineageId="Package\DFT - Load Order Items\Flat File Source.Outputs[Flat File Source Output].Columns[maintenance_amount]" />
                     <inputColumn
                       refId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[shipping_fee_item]"
                       cachedDataType="decimal"
@@ -1064,6 +1064,12 @@
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
+                      refId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="product_id" />
+                    <externalMetadataColumn
                       refId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[order_id]"
                       dataType="i4"
                       name="order_id" />
@@ -1071,12 +1077,6 @@
                       refId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[order_item_id]"
                       dataType="i4"
                       name="order_item_id" />
-                    <externalMetadataColumn
-                      refId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_id]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      name="product_id" />
                     <externalMetadataColumn
                       refId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[unit_price]"
                       dataType="numeric"
@@ -1087,18 +1087,6 @@
                       refId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[quantity]"
                       dataType="i4"
                       name="quantity" />
-                    <externalMetadataColumn
-                      refId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[commission_amount]"
-                      dataType="numeric"
-                      name="commission_amount"
-                      precision="12"
-                      scale="2" />
-                    <externalMetadataColumn
-                      refId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[maintenance_amount]"
-                      dataType="numeric"
-                      name="maintenance_amount"
-                      precision="12"
-                      scale="2" />
                     <externalMetadataColumn
                       refId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[unit_price_after_discount]"
                       dataType="numeric"
@@ -1115,6 +1103,18 @@
                       refId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[discount_percent]"
                       dataType="numeric"
                       name="discount_percent"
+                      precision="12"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[commission_amount]"
+                      dataType="numeric"
+                      name="commission_amount"
+                      precision="12"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Order Items\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[maintenance_amount]"
+                      dataType="numeric"
+                      name="maintenance_amount"
                       precision="12"
                       scale="2" />
                     <externalMetadataColumn
@@ -1606,8 +1606,8 @@
               <connections>
                 <connection
                   refId="Package\DFT - Load Orders\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[localhost.ShopeeThailandDWH]"
-                  connectionManagerRefId="Package.ConnectionManagers[localhost.ShopeeThailandDWH]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.ShopeeThailandDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.ShopeeThailandDW]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2141,8 +2141,8 @@
               <connections>
                 <connection
                   refId="Package\DFT - Load Products\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[localhost.ShopeeThailandDWH]"
-                  connectionManagerRefId="Package.ConnectionManagers[localhost.ShopeeThailandDWH]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.ShopeeThailandDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.ShopeeThailandDW]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2308,7 +2308,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{CA9E95CA-A41B-427C-89C2-5B9424DED4A8}"
+          SQLTask:Connection="{C8799E27-ACF3-4A20-88B4-8B1E57E559D6}"
           SQLTask:SqlStatementSource="TRUNCATE TABLE staging.stg_products;&#xA;TRUNCATE TABLE staging.stg_order_items;&#xA;TRUNCATE TABLE staging.stg_orders;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
