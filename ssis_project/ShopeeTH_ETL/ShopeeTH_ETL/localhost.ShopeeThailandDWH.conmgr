@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="localhost.ShopeeThailandDW"
+  DTS:DTSID="{9057B5E8-F9D6-4452-BA78-A0B83AF6452E}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=localhost;Initial Catalog=ShopeeThailandDWH;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package1-{9057B5E8-F9D6-4452-BA78-A0B83AF6452E}localhost.ShopeeThailandDW;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
