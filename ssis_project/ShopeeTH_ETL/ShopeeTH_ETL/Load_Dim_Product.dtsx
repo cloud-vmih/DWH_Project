@@ -12,23 +12,11 @@
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="15"
-  DTS:VersionGUID="{952BAF32-2A12-4066-8138-882A70EA34C3}">
+  DTS:VersionBuild="22"
+  DTS:VersionGUID="{88BF5B49-E602-441C-B63F-A8308BF7E810}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[localhost.ShopeeThailandDW]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{006BF955-BE7D-4B4C-A2F8-8ED65A3F86F7}"
-      DTS:ObjectName="localhost.ShopeeThailandDW">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Initial Catalog=ShopeeThailandDW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{006BF955-BE7D-4B4C-A2F8-8ED65A3F86F7}localhost.ShopeeThailandDW;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[localhost.ShopeeThailandDWH]"
       DTS:CreationName="OLEDB"
@@ -45,13 +33,13 @@
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\DFT - Load dim_product (SCD Type 1)"
+      DTS:refId="Package\DFT - Load dim_product (SCD Type 2)"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
       DTS:DTSID="{65CF8492-0BF4-4282-A3FA-A2FCF8A629EA}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="DFT - Load dim_product (SCD Type 1)"
+      DTS:ObjectName="DFT - Load dim_product (SCD Type 2)"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -59,7 +47,7 @@
           version="1">
           <components>
             <component
-              refId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split"
+              refId="Package\DFT - Load dim_product (SCD Type 2)\Conditional Split"
               componentClassID="Microsoft.ConditionalSplit"
               contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
@@ -67,64 +55,95 @@
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Inputs[Conditional Split Input]"
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\Conditional Split.Inputs[Conditional Split Input]"
                   description="Input to the Conditional Split Transformation"
                   name="Conditional Split Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Inputs[Conditional Split Input].Columns[commission_rate]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Conditional Split.Inputs[Conditional Split Input].Columns[commission_rate]"
                       cachedDataType="numeric"
                       cachedName="commission_rate"
                       cachedPrecision="5"
                       cachedScale="2"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[commission_rate]" />
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[commission_rate]" />
                     <inputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Inputs[Conditional Split Input].Columns[weight]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Conditional Split.Inputs[Conditional Split Input].Columns[weight]"
                       cachedDataType="numeric"
                       cachedName="weight"
                       cachedPrecision="10"
                       cachedScale="3"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[weight]" />
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[weight]" />
                     <inputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Inputs[Conditional Split Input].Columns[existing_weight]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Conditional Split.Inputs[Conditional Split Input].Columns[existing_weight]"
                       cachedDataType="numeric"
                       cachedName="existing_weight"
                       cachedPrecision="10"
                       cachedScale="3"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_weight]" />
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_weight]" />
                     <inputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Inputs[Conditional Split Input].Columns[existing_commission_rate]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Conditional Split.Inputs[Conditional Split Input].Columns[existing_commission_rate]"
                       cachedDataType="numeric"
                       cachedName="existing_commission_rate"
                       cachedPrecision="5"
                       cachedScale="2"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_commission_rate]" />
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_commission_rate]" />
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Conditional Split.Inputs[Conditional Split Input].Columns[product_name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="product_name"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[product_name]" />
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Conditional Split.Inputs[Conditional Split Input].Columns[maintenance_rate]"
+                      cachedDataType="numeric"
+                      cachedName="maintenance_rate"
+                      cachedPrecision="5"
+                      cachedScale="2"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[maintenance_rate]" />
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Conditional Split.Inputs[Conditional Split Input].Columns[existing_product_key]"
+                      cachedDataType="i4"
+                      cachedName="existing_product_key"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_product_key]" />
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Conditional Split.Inputs[Conditional Split Input].Columns[existing_maintenance_rate]"
+                      cachedDataType="numeric"
+                      cachedName="existing_maintenance_rate"
+                      cachedPrecision="5"
+                      cachedScale="2"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_maintenance_rate]" />
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Conditional Split.Inputs[Conditional Split Input].Columns[existing_name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="existing_name"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_name]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Outputs[Is_Changed]"
-                  description="Output 1 of the Conditional Split Transformation"
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\Conditional Split.Outputs[New]"
+                  description="Output 2 of the Conditional Split Transformation"
                   errorOrTruncationOperation="Computation"
                   errorRowDisposition="FailComponent"
                   exclusionGroup="1"
-                  name="Is_Changed"
-                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Inputs[Conditional Split Input]"
+                  name="New"
+                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 2)\Conditional Split.Inputs[Conditional Split Input]"
                   truncationRowDisposition="FailComponent">
                   <properties>
                     <property
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
-                      name="Expression">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[weight]} != #{Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_weight]} || #{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[commission_rate]} != #{Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_commission_rate]}</property>
+                      name="Expression">[ISNULL](#{Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_product_key]})</property>
                     <property
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the friendly version of the expression. This expression version uses column names."
                       expressionType="Notify"
-                      name="FriendlyExpression">weight != existing_weight || commission_rate != existing_commission_rate</property>
+                      name="FriendlyExpression">ISNULL(existing_key)</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
@@ -133,11 +152,39 @@
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Outputs[Unchanged]"
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\Conditional Split.Outputs[Changed]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Changed"
+                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 2)\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_product_key]}) ==  FALSE  &amp;&amp; ([ISNULL](#{Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[weight]}) != [ISNULL](#{Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_weight]}) || [ISNULL](#{Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[commission_rate]}) != [ISNULL](#{Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_commission_rate]}) || [ISNULL](#{Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[maintenance_rate]}) != [ISNULL](#{Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_maintenance_rate]}) || [ISNULL](#{Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[product_name]}) != [ISNULL](#{Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_name]}))</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(existing_key) ==  FALSE  &amp;&amp; (ISNULL(weight) != ISNULL(existing_weight) || ISNULL(commission_rate) != ISNULL(existing_commission_rate) || ISNULL(maintenance_rate) != ISNULL(existing_maintenance_rate) || ISNULL(product_name) != ISNULL(existing_name))</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\Conditional Split.Outputs[Unchanged]"
                   description="Default Output of the Conditional Split Transformation"
                   exclusionGroup="1"
                   name="Unchanged"
-                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Inputs[Conditional Split Input]">
+                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 2)\Conditional Split.Inputs[Conditional Split Input]">
                   <properties>
                     <property
                       dataType="System.Boolean"
@@ -146,23 +193,23 @@
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Outputs[Conditional Split Error Output]"
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\Conditional Split.Outputs[Conditional Split Error Output]"
                   description="Error Output of the Conditional Split Transformation"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Conditional Split Error Output"
-                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Inputs[Conditional Split Input]">
+                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 2)\Conditional Split.Inputs[Conditional Split Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -171,7 +218,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\DFT - Load dim_product (SCD Type 1)\Derived Column"
+              refId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
@@ -179,7 +226,7 @@
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\DFT - Load dim_product (SCD Type 1)\Derived Column.Inputs[Derived Column Input]"
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column.Inputs[Derived Column Input]"
                   description="Input to the Derived Column Transformation"
                   name="Derived Column Input">
                   <externalMetadataColumns />
@@ -187,18 +234,18 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT - Load dim_product (SCD Type 1)\Derived Column.Outputs[Derived Column Output]"
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column.Outputs[Derived Column Output]"
                   description="Default Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   name="Derived Column Output"
-                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 1)\Derived Column.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Derived Column.Outputs[Derived Column Output].Columns[lkp_category_key]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column.Outputs[Derived Column Output].Columns[lkp_category_key]"
                       dataType="i4"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Derived Column.Outputs[Derived Column Output].Columns[lkp_category_key]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column.Outputs[Derived Column Output].Columns[lkp_category_key]"
                       name="lkp_category_key"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -219,23 +266,23 @@
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DFT - Load dim_product (SCD Type 1)\Derived Column.Outputs[Derived Column Error Output]"
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column.Outputs[Derived Column Error Output]"
                   description="Error Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Derived Column Error Output"
-                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 1)\Derived Column.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -244,7 +291,125 @@
               </outputs>
             </component>
             <component
-              refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category"
+              refId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column 1.Outputs[Derived Column Output].Columns[effective_from]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column 1.Outputs[Derived Column Output].Columns[effective_from]"
+                      name="effective_from"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column 1.Outputs[Derived Column Output].Columns[effective_to]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="10"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column 1.Outputs[Derived Column Output].Columns[effective_to]"
+                      name="effective_to"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"9999-12-31"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"9999-12-31"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column 1.Outputs[Derived Column Output].Columns[is_current]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column 1.Outputs[Derived Column Output].Columns[is_current]"
+                      name="is_current"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Load dim_product (SCD Type 2)\Lookup  dim_product_category"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
@@ -300,7 +465,7 @@ where [refTable].[category_name] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[category]};</property>
+                  name="ParameterMap">#{Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].Columns[category]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -312,7 +477,7 @@ where [refTable].[category_name] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Connections[OleDbConnection]"
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\Lookup  dim_product_category.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[localhost.ShopeeThailandDWH]"
                   connectionManagerRefId="Package.ConnectionManagers[localhost.ShopeeThailandDWH]"
                   description="Connection manager used to access lookup data."
@@ -320,15 +485,15 @@ where [refTable].[category_name] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Inputs[Lookup Input]"
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\Lookup  dim_product_category.Inputs[Lookup Input]"
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Inputs[Lookup Input].Columns[category]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Lookup  dim_product_category.Inputs[Lookup Input].Columns[category]"
                       cachedDataType="wstr"
                       cachedLength="100"
                       cachedName="category"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[category]">
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].Columns[category]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -346,17 +511,17 @@ where [refTable].[category_name] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Outputs[Lookup Match Output]"
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\Lookup  dim_product_category.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Inputs[Lookup Input]">
+                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 2)\Lookup  dim_product_category.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Outputs[Lookup Match Output].Columns[lkp_category_key]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Lookup  dim_product_category.Outputs[Lookup Match Output].Columns[lkp_category_key]"
                       dataType="i4"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Outputs[Lookup Match Output].Columns[lkp_category_key]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Lookup  dim_product_category.Outputs[Lookup Match Output].Columns[lkp_category_key]"
                       name="lkp_category_key"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -370,30 +535,30 @@ where [refTable].[category_name] = ?</property>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Outputs[Lookup No Match Output]"
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\Lookup  dim_product_category.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Inputs[Lookup Input]">
+                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 2)\Lookup  dim_product_category.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Outputs[Lookup Error Output]"
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\Lookup  dim_product_category.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Inputs[Lookup Input]">
+                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 2)\Lookup  dim_product_category.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Lookup  dim_product_category.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Lookup  dim_product_category.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Lookup  dim_product_category.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Lookup  dim_product_category.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -402,7 +567,7 @@ where [refTable].[category_name] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product"
+              refId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
@@ -415,13 +580,19 @@ where [refTable].[category_name] = ?</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dwh].[dim_product]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT *
+FROM dwh.dim_product
+
+WHERE is_current = 1;</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dwh].[dim_product]) [refTable]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT *
+FROM dwh.dim_product
+
+WHERE is_current = 1;) [refTable]
 where [refTable].[product_id] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -458,7 +629,7 @@ where [refTable].[product_id] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[product_id]};</property>
+                  name="ParameterMap">#{Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[product_id]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -470,7 +641,7 @@ where [refTable].[product_id] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Connections[OleDbConnection]"
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[localhost.ShopeeThailandDWH]"
                   connectionManagerRefId="Package.ConnectionManagers[localhost.ShopeeThailandDWH]"
                   description="Connection manager used to access lookup data."
@@ -478,16 +649,16 @@ where [refTable].[product_id] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Inputs[Lookup Input]"
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Inputs[Lookup Input]"
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Inputs[Lookup Input].Columns[product_id]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Inputs[Lookup Input].Columns[product_id]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="product_id"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[product_id]">
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[product_id]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -505,17 +676,17 @@ where [refTable].[product_id] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup Match Output]"
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Inputs[Lookup Input]">
+                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_weight]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_weight]"
                       dataType="numeric"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_weight]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_weight]"
                       name="existing_weight"
                       precision="10"
                       scale="3"
@@ -528,10 +699,10 @@ where [refTable].[product_id] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_commission_rate]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_commission_rate]"
                       dataType="numeric"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_commission_rate]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_commission_rate]"
                       name="existing_commission_rate"
                       precision="5"
                       scale="2"
@@ -543,34 +714,79 @@ where [refTable].[product_id] = ?</property>
                           name="CopyFromReferenceColumn">commission_rate</property>
                       </properties>
                     </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_product_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_product_key]"
+                      name="existing_product_key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">product_key</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_maintenance_rate]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_maintenance_rate]"
+                      name="existing_maintenance_rate"
+                      precision="5"
+                      scale="2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">maintenance_rate</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="100"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_name]"
+                      name="existing_name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">product_name</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup No Match Output]"
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Inputs[Lookup Input]">
+                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup Error Output]"
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Inputs[Lookup Input]">
+                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -579,7 +795,7 @@ where [refTable].[product_id] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command"
+              refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Command"
               componentClassID="Microsoft.OLEDBCommand"
               contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
               description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
@@ -596,9 +812,7 @@ where [refTable].[product_id] = ?</property>
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE gold.dim_product
-SET product_name = ?, weight = ?, maintenance_rate = ?, commission_rate = ?
-WHERE product_key = ?;</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE dwh.dim_product SET is_current = 0, effective_to = GETDATE() WHERE product_key = ?;</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -606,64 +820,32 @@ WHERE product_key = ?;</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[localhost.ShopeeThailandDW]"
-                  connectionManagerRefId="Package.ConnectionManagers[localhost.ShopeeThailandDW]"
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.ShopeeThailandDWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.ShopeeThailandDWH]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
               <inputs>
                 <input
-                  refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input]"
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Command.Inputs[OLE DB Command Input]"
                   errorOrTruncationOperation="Command Execution"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Command Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input].Columns[product_name]"
-                      cachedDataType="wstr"
-                      cachedLength="100"
-                      cachedName="product_name"
-                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[product_name]" />
-                    <inputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input].Columns[weight]"
-                      cachedDataType="numeric"
-                      cachedName="weight"
-                      cachedPrecision="10"
-                      cachedScale="3"
-                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[weight]" />
-                    <inputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input].Columns[maintenance_rate]"
-                      cachedDataType="numeric"
-                      cachedName="maintenance_rate"
-                      cachedPrecision="5"
-                      cachedScale="2"
-                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[maintenance_rate]" />
-                    <inputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input].Columns[commission_rate]"
-                      cachedDataType="numeric"
-                      cachedName="commission_rate"
-                      cachedPrecision="5"
-                      cachedScale="2"
-                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[commission_rate]" />
-                    <inputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input].Columns[lkp_category_key]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Command.Inputs[OLE DB Command Input].Columns[existing_product_key]"
                       cachedDataType="i4"
-                      cachedName="lkp_category_key"
-                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[lkp_category_key]" />
+                      cachedName="existing_product_key"
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Outputs[Lookup Match Output].Columns[existing_product_key]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
-                      dataType="wstr"
-                      length="100"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="i4"
                       name="Param_0">
                       <properties>
                         <property
@@ -672,84 +854,34 @@ WHERE product_key = ?;</property>
                           name="DBParamInfoFlags">65</property>
                       </properties>
                     </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                      dataType="numeric"
-                      name="Param_1"
-                      precision="10"
-                      scale="3">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">81</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                      dataType="numeric"
-                      name="Param_2"
-                      precision="5"
-                      scale="2">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">81</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
-                      dataType="numeric"
-                      name="Param_3"
-                      precision="5"
-                      scale="2">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">81</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
-                      dataType="i4"
-                      name="Param_4">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">17</property>
-                      </properties>
-                    </externalMetadataColumn>
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Outputs[OLE DB Command Output]"
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Command.Outputs[OLE DB Command Output]"
                   exclusionGroup="1"
                   name="OLE DB Command Output"
-                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input]">
+                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Command.Inputs[OLE DB Command Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Command.Outputs[OLE DB Command Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Command Error Output"
-                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input]">
+                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Command.Inputs[OLE DB Command Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -758,7 +890,7 @@ WHERE product_key = ?;</property>
               </outputs>
             </component>
             <component
-              refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination"
+              refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
@@ -815,7 +947,7 @@ WHERE product_key = ?;</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Connections[OleDbConnection]"
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[localhost.ShopeeThailandDWH]"
                   connectionManagerRefId="Package.ConnectionManagers[localhost.ShopeeThailandDWH]"
                   description="The OLE DB runtime connection used to access the database."
@@ -823,109 +955,128 @@ WHERE product_key = ?;</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[product_id]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[product_id]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="product_id"
-                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_id]"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[product_id]" />
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_id]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[product_id]" />
                     <inputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[product_name]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[product_name]"
                       cachedDataType="wstr"
                       cachedLength="100"
                       cachedName="product_name"
-                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_name]"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[product_name]" />
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_name]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[product_name]" />
                     <inputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[maintenance_rate]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[maintenance_rate]"
                       cachedDataType="numeric"
                       cachedName="maintenance_rate"
                       cachedPrecision="5"
                       cachedScale="2"
-                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[maintenance_rate]"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[maintenance_rate]" />
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[maintenance_rate]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[maintenance_rate]" />
                     <inputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[commission_rate]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[commission_rate]"
                       cachedDataType="numeric"
                       cachedName="commission_rate"
                       cachedPrecision="5"
                       cachedScale="2"
-                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[commission_rate]"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[commission_rate]" />
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[commission_rate]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[commission_rate]" />
                     <inputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[weight]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[weight]"
                       cachedDataType="numeric"
                       cachedName="weight"
                       cachedPrecision="10"
                       cachedScale="3"
-                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[weight]"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[weight]" />
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[weight]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[weight]" />
                     <inputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[lkp_category_key]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[lkp_category_key]"
                       cachedDataType="i4"
                       cachedName="lkp_category_key"
-                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[category_key]"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[lkp_category_key]" />
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[category_key]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[lkp_category_key]" />
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[effective_from]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="effective_from"
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[effective_from]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column 1.Outputs[Derived Column Output].Columns[effective_from]" />
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[effective_to]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="effective_to"
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[effective_to]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column 1.Outputs[Derived Column Output].Columns[effective_to]" />
+                    <inputColumn
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[is_current]"
+                      cachedDataType="i4"
+                      cachedName="is_current"
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[is_current]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column 1.Outputs[Derived Column Output].Columns[is_current]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_key]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_key]"
                       dataType="i4"
                       name="product_key" />
                     <externalMetadataColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_id]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_id]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="product_id" />
                     <externalMetadataColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_name]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_name]"
                       dataType="wstr"
                       length="100"
                       name="product_name" />
                     <externalMetadataColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[category_key]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[category_key]"
                       dataType="i4"
                       name="category_key" />
                     <externalMetadataColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[weight]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[weight]"
                       dataType="numeric"
                       name="weight"
                       precision="10"
                       scale="3" />
                     <externalMetadataColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[maintenance_rate]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[maintenance_rate]"
                       dataType="numeric"
                       name="maintenance_rate"
                       precision="5"
                       scale="2" />
                     <externalMetadataColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[commission_rate]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[commission_rate]"
                       dataType="numeric"
                       name="commission_rate"
                       precision="5"
                       scale="2" />
                     <externalMetadataColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[effective_from]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[effective_from]"
                       dataType="wstr"
                       length="10"
                       name="effective_from" />
                     <externalMetadataColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[effective_to]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[effective_to]"
                       dataType="wstr"
                       length="10"
                       name="effective_to" />
                     <externalMetadataColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[is_current]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[is_current]"
                       dataType="bool"
                       name="is_current" />
                   </externalMetadataColumns>
@@ -933,22 +1084,22 @@ WHERE product_key = ?;</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -957,7 +1108,7 @@ WHERE product_key = ?;</property>
               </outputs>
             </component>
             <component
-              refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source"
+              refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
@@ -1013,7 +1164,7 @@ FROM staging.stg_products;</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Connections[OleDbConnection]"
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[localhost.ShopeeThailandDWH]"
                   connectionManagerRefId="Package.ConnectionManagers[localhost.ShopeeThailandDWH]"
                   description="The OLE DB runtime connection used to access the database."
@@ -1021,69 +1172,69 @@ FROM staging.stg_products;</property>
               </connections>
               <outputs>
                 <output
-                  refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output]"
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_id]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_id]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_id]"
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_id]"
                       length="50"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_id]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_id]"
                       name="product_id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[category]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].Columns[category]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[category]"
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[category]"
                       length="100"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[category]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].Columns[category]"
                       name="category"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_name]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_name]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_name]"
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_name]"
                       length="100"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_name]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_name]"
                       name="product_name"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[maintenance_rate]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].Columns[maintenance_rate]"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[maintenance_rate]"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[maintenance_rate]"
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[maintenance_rate]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].Columns[maintenance_rate]"
                       name="maintenance_rate"
                       precision="5"
                       scale="2"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[commission_rate]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].Columns[commission_rate]"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[commission_rate]"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[commission_rate]"
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[commission_rate]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].Columns[commission_rate]"
                       name="commission_rate"
                       precision="5"
                       scale="2"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[weight]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].Columns[weight]"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[weight]"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[weight]"
+                      externalMetadataColumnId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[weight]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].Columns[weight]"
                       name="weight"
                       precision="10"
                       scale="3"
@@ -1092,35 +1243,35 @@ FROM staging.stg_products;</property>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_id]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_id]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="product_id" />
                     <externalMetadataColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[category]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[category]"
                       dataType="wstr"
                       length="100"
                       name="category" />
                     <externalMetadataColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_name]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_name]"
                       dataType="wstr"
                       length="100"
                       name="product_name" />
                     <externalMetadataColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[maintenance_rate]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[maintenance_rate]"
                       dataType="numeric"
                       name="maintenance_rate"
                       precision="5"
                       scale="2" />
                     <externalMetadataColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[commission_rate]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[commission_rate]"
                       dataType="numeric"
                       name="commission_rate"
                       precision="5"
                       scale="2" />
                     <externalMetadataColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[weight]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[weight]"
                       dataType="numeric"
                       name="weight"
                       precision="10"
@@ -1128,60 +1279,60 @@ FROM staging.stg_products;</property>
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_id]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_id]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_id]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_id]"
                       name="product_id" />
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[category]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[category]"
                       dataType="wstr"
                       length="100"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[category]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[category]"
                       name="category" />
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_name]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_name]"
                       dataType="wstr"
                       length="100"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_name]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_name]"
                       name="product_name" />
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[maintenance_rate]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[maintenance_rate]"
                       dataType="numeric"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[maintenance_rate]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[maintenance_rate]"
                       name="maintenance_rate"
                       precision="5"
                       scale="2" />
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[commission_rate]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[commission_rate]"
                       dataType="numeric"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[commission_rate]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[commission_rate]"
                       name="commission_rate"
                       precision="5"
                       scale="2" />
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[weight]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[weight]"
                       dataType="numeric"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[weight]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[weight]"
                       name="weight"
                       precision="10"
                       scale="3" />
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1190,7 +1341,7 @@ FROM staging.stg_products;</property>
               </outputs>
             </component>
             <component
-              refId="Package\DFT - Load dim_product (SCD Type 1)\Union All"
+              refId="Package\DFT - Load dim_product (SCD Type 2)\Union All"
               componentClassID="Microsoft.UnionAll"
               contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
@@ -1198,224 +1349,224 @@ FROM staging.stg_products;</property>
               version="1">
               <inputs>
                 <input
-                  refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 1]"
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Inputs[Union All Input 1]"
                   name="Union All Input 1">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 1].Columns[product_id]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Inputs[Union All Input 1].Columns[product_id]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="product_id"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_id]">
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_id]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[product_id]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[product_id]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 1].Columns[category]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Inputs[Union All Input 1].Columns[category]"
                       cachedDataType="wstr"
                       cachedLength="100"
                       cachedName="category"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[category]">
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].Columns[category]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[category]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[category]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 1].Columns[product_name]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Inputs[Union All Input 1].Columns[product_name]"
                       cachedDataType="wstr"
                       cachedLength="100"
                       cachedName="product_name"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_name]">
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_name]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[product_name]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[product_name]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 1].Columns[maintenance_rate]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Inputs[Union All Input 1].Columns[maintenance_rate]"
                       cachedDataType="numeric"
                       cachedName="maintenance_rate"
                       cachedPrecision="5"
                       cachedScale="2"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[maintenance_rate]">
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].Columns[maintenance_rate]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[maintenance_rate]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[maintenance_rate]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 1].Columns[commission_rate]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Inputs[Union All Input 1].Columns[commission_rate]"
                       cachedDataType="numeric"
                       cachedName="commission_rate"
                       cachedPrecision="5"
                       cachedScale="2"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[commission_rate]">
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].Columns[commission_rate]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[commission_rate]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[commission_rate]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 1].Columns[weight]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Inputs[Union All Input 1].Columns[weight]"
                       cachedDataType="numeric"
                       cachedName="weight"
                       cachedPrecision="10"
                       cachedScale="3"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[weight]">
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].Columns[weight]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[weight]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[weight]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 1].Columns[lkp_category_key]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Inputs[Union All Input 1].Columns[lkp_category_key]"
                       cachedDataType="i4"
                       cachedName="lkp_category_key"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Outputs[Lookup Match Output].Columns[lkp_category_key]">
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Lookup  dim_product_category.Outputs[Lookup Match Output].Columns[lkp_category_key]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[lkp_category_key]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[lkp_category_key]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
                 <input
-                  refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 2]"
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Inputs[Union All Input 2]"
                   hasSideEffects="true"
                   name="Union All Input 2">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 2].Columns[product_id]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Inputs[Union All Input 2].Columns[product_id]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="product_id"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_id]">
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_id]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[product_id]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[product_id]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 2].Columns[category]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Inputs[Union All Input 2].Columns[category]"
                       cachedDataType="wstr"
                       cachedLength="100"
                       cachedName="category"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[category]">
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].Columns[category]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[category]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[category]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 2].Columns[product_name]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Inputs[Union All Input 2].Columns[product_name]"
                       cachedDataType="wstr"
                       cachedLength="100"
                       cachedName="product_name"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_name]">
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_name]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[product_name]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[product_name]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 2].Columns[maintenance_rate]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Inputs[Union All Input 2].Columns[maintenance_rate]"
                       cachedDataType="numeric"
                       cachedName="maintenance_rate"
                       cachedPrecision="5"
                       cachedScale="2"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[maintenance_rate]">
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].Columns[maintenance_rate]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[maintenance_rate]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[maintenance_rate]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 2].Columns[commission_rate]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Inputs[Union All Input 2].Columns[commission_rate]"
                       cachedDataType="numeric"
                       cachedName="commission_rate"
                       cachedPrecision="5"
                       cachedScale="2"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[commission_rate]">
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].Columns[commission_rate]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[commission_rate]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[commission_rate]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 2].Columns[weight]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Inputs[Union All Input 2].Columns[weight]"
                       cachedDataType="numeric"
                       cachedName="weight"
                       cachedPrecision="10"
                       cachedScale="3"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output].Columns[weight]">
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output].Columns[weight]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[weight]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[weight]}</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 2].Columns[lkp_category_key]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Inputs[Union All Input 2].Columns[lkp_category_key]"
                       cachedDataType="i4"
                       cachedName="lkp_category_key"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Derived Column.Outputs[Derived Column Output].Columns[lkp_category_key]">
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column.Outputs[Derived Column Output].Columns[lkp_category_key]">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[lkp_category_key]}</property>
+                          name="OutputColumnLineageID">#{Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[lkp_category_key]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
                 <input
-                  refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 3]"
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Inputs[Union All Input 3]"
                   dangling="true"
                   hasSideEffects="true"
                   name="Union All Input 3">
@@ -1424,53 +1575,53 @@ FROM staging.stg_products;</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1]"
+                  refId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1]"
                   name="Union All Output 1">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[product_id]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[product_id]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[product_id]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[product_id]"
                       name="product_id" />
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[category]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[category]"
                       dataType="wstr"
                       length="100"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[category]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[category]"
                       name="category" />
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[product_name]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[product_name]"
                       dataType="wstr"
                       length="100"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[product_name]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[product_name]"
                       name="product_name" />
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[maintenance_rate]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[maintenance_rate]"
                       dataType="numeric"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[maintenance_rate]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[maintenance_rate]"
                       name="maintenance_rate"
                       precision="5"
                       scale="2" />
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[commission_rate]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[commission_rate]"
                       dataType="numeric"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[commission_rate]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[commission_rate]"
                       name="commission_rate"
                       precision="5"
                       scale="2" />
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[weight]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[weight]"
                       dataType="numeric"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[weight]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[weight]"
                       name="weight"
                       precision="10"
                       scale="3" />
                     <outputColumn
-                      refId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[lkp_category_key]"
+                      refId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[lkp_category_key]"
                       dataType="i4"
-                      lineageId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1].Columns[lkp_category_key]"
+                      lineageId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1].Columns[lkp_category_key]"
                       name="lkp_category_key" />
                   </outputColumns>
                   <externalMetadataColumns />
@@ -1480,45 +1631,50 @@ FROM staging.stg_products;</property>
           </components>
           <paths>
             <path
-              refId="Package\DFT - Load dim_product (SCD Type 1).Paths[Derived Column Output]"
-              endId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 2]"
+              refId="Package\DFT - Load dim_product (SCD Type 2).Paths[Changed]"
+              endId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Changed"
+              startId="Package\DFT - Load dim_product (SCD Type 2)\Conditional Split.Outputs[Changed]" />
+            <path
+              refId="Package\DFT - Load dim_product (SCD Type 2).Paths[Derived Column Output]"
+              endId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Inputs[Union All Input 2]"
               name="Derived Column Output"
-              startId="Package\DFT - Load dim_product (SCD Type 1)\Derived Column.Outputs[Derived Column Output]" />
+              startId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column.Outputs[Derived Column Output]" />
             <path
-              refId="Package\DFT - Load dim_product (SCD Type 1).Paths[Lookup Match Output]"
-              endId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Inputs[Union All Input 1]"
+              refId="Package\DFT - Load dim_product (SCD Type 2).Paths[Derived Column Output1]"
+              endId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column 1.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT - Load dim_product (SCD Type 2).Paths[Lookup Match Output]"
+              endId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Inputs[Union All Input 1]"
               name="Lookup Match Output"
-              startId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Outputs[Lookup Match Output]" />
+              startId="Package\DFT - Load dim_product (SCD Type 2)\Lookup  dim_product_category.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\DFT - Load dim_product (SCD Type 1).Paths[Lookup Match Output1]"
-              endId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Inputs[Conditional Split Input]"
+              refId="Package\DFT - Load dim_product (SCD Type 2).Paths[Lookup Match Output1]"
+              endId="Package\DFT - Load dim_product (SCD Type 2)\Conditional Split.Inputs[Conditional Split Input]"
               name="Lookup Match Output"
-              startId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup Match Output]" />
+              startId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\DFT - Load dim_product (SCD Type 1).Paths[Lookup No Match Output]"
-              endId="Package\DFT - Load dim_product (SCD Type 1)\Derived Column.Inputs[Derived Column Input]"
+              refId="Package\DFT - Load dim_product (SCD Type 2).Paths[Lookup No Match Output]"
+              endId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column.Inputs[Derived Column Input]"
               name="Lookup No Match Output"
-              startId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Outputs[Lookup No Match Output]" />
+              startId="Package\DFT - Load dim_product (SCD Type 2)\Lookup  dim_product_category.Outputs[Lookup No Match Output]" />
             <path
-              refId="Package\DFT - Load dim_product (SCD Type 1).Paths[Lookup No Match Output1]"
-              endId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              refId="Package\DFT - Load dim_product (SCD Type 2).Paths[Lookup No Match Output1]"
+              endId="Package\DFT - Load dim_product (SCD Type 2)\Derived Column 1.Inputs[Derived Column Input]"
               name="Lookup No Match Output"
-              startId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Outputs[Lookup No Match Output]" />
+              startId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Outputs[Lookup No Match Output]" />
             <path
-              refId="Package\DFT - Load dim_product (SCD Type 1).Paths[OLE DB Source Output]"
-              endId="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category.Inputs[Lookup Input]"
+              refId="Package\DFT - Load dim_product (SCD Type 2).Paths[OLE DB Source Output]"
+              endId="Package\DFT - Load dim_product (SCD Type 2)\Lookup  dim_product_category.Inputs[Lookup Input]"
               name="OLE DB Source Output"
-              startId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source.Outputs[OLE DB Source Output]" />
+              startId="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\DFT - Load dim_product (SCD Type 1).Paths[Unchanged]"
-              endId="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command.Inputs[OLE DB Command Input]"
-              name="Unchanged"
-              startId="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split.Outputs[Unchanged]" />
-            <path
-              refId="Package\DFT - Load dim_product (SCD Type 1).Paths[Union All Output 1]"
-              endId="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product.Inputs[Lookup Input]"
+              refId="Package\DFT - Load dim_product (SCD Type 2).Paths[Union All Output 1]"
+              endId="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product.Inputs[Lookup Input]"
               name="Union All Output 1"
-              startId="Package\DFT - Load dim_product (SCD Type 1)\Union All.Outputs[Union All Output 1]" />
+              startId="Package\DFT - Load dim_product (SCD Type 2)\Union All.Outputs[Union All Output 1]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1973,7 +2129,7 @@ WHERE category IS NOT NULL;</property>
       DTS:From="Package\DFT - Load dim_product_category (SCD Type 1)"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
-      DTS:To="Package\DFT - Load dim_product (SCD Type 1)" />
+      DTS:To="Package\DFT - Load dim_product (SCD Type 2)" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -1989,7 +2145,7 @@ WHERE category IS NOT NULL;</property>
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="259.2,41.6"
-          Id="Package\DFT - Load dim_product (SCD Type 1)"
+          Id="Package\DFT - Load dim_product (SCD Type 2)"
           TopLeft="178.57142895156,362.470587917575" />
         <NodeLayout
           Size="305.6,41.6"
@@ -2005,14 +2161,14 @@ WHERE category IS NOT NULL;</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,76.9294116608103"
+              EndConnector="0,76.92941166081"
               Start="0,0"
-              End="0,69.4294116608103">
+              End="0,69.42941166081">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,69.4294116608103" />
+                    End="0,69.42941166081" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2027,14 +2183,14 @@ WHERE category IS NOT NULL;</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,73.8705881340797"
+              EndConnector="0,73.87058813408"
               Start="0,0"
-              End="0,66.3705881340797">
+              End="0,66.37058813408">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,66.3705881340797" />
+                    End="0,66.37058813408" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2047,45 +2203,45 @@ WHERE category IS NOT NULL;</property>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\DFT - Load dim_product (SCD Type 1)">
+    design-time-name="Package\DFT - Load dim_product (SCD Type 2)">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="174.4,41.6"
-          Id="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product"
-          TopLeft="311.666662022471,441.66666008532" />
-        <NodeLayout
-          Size="149.6,41.6"
-          Id="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source"
-          TopLeft="327.999995112419,145.333331167698" />
+          Id="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product"
+          TopLeft="307.666662082076,366.666661202907" />
         <NodeLayout
           Size="120,41.6"
-          Id="Package\DFT - Load dim_product (SCD Type 1)\Union All"
-          TopLeft="524.166658855974,355.833328031003" />
+          Id="Package\DFT - Load dim_product (SCD Type 2)\Union All"
+          TopLeft="520.166658915579,280.83332914859" />
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source"
+          TopLeft="323.999995172024,70.333332285285" />
         <NodeLayout
           Size="164.8,41.6"
-          Id="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Command"
-          TopLeft="192.499997131526,624.333325063189" />
+          Id="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Command"
+          TopLeft="186.499997220933,574.333325808247" />
         <NodeLayout
           Size="224.8,41.6"
-          Id="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category"
-          TopLeft="274.999995902181,228.333329930902" />
+          Id="Package\DFT - Load dim_product (SCD Type 2)\Lookup  dim_product_category"
+          TopLeft="270.999995961786,153.333331048489" />
         <NodeLayout
           Size="154.4,41.6"
-          Id="Package\DFT - Load dim_product (SCD Type 1)\Conditional Split"
-          TopLeft="196.666663736105,548.33332516253" />
+          Id="Package\DFT - Load dim_product (SCD Type 2)\Conditional Split"
+          TopLeft="190.666663825512,475.333326250315" />
         <NodeLayout
           Size="170.4,41.6"
-          Id="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination"
-          TopLeft="429.999993592501,554.333325907588" />
+          Id="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination"
+          TopLeft="450.999993279577,574.333325609565" />
         <NodeLayout
           Size="152.8,41.6"
-          Id="Package\DFT - Load dim_product (SCD Type 1)\Derived Column"
-          TopLeft="126.666664779186,356.666661351919" />
+          Id="Package\DFT - Load dim_product (SCD Type 2)\Derived Column"
+          TopLeft="122.666664838791,281.666662469506" />
         <EdgeLayout
-          Id="Package\DFT - Load dim_product (SCD Type 1).Paths[Union All Output 1]"
-          TopLeft="584.166658855974,397.433328031003">
+          Id="Package\DFT - Load dim_product (SCD Type 2).Paths[Union All Output 1]"
+          TopLeft="580.166658915579,322.43332914859">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2118,32 +2274,8 @@ WHERE category IS NOT NULL;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT - Load dim_product (SCD Type 1).Paths[Unchanged]"
-          TopLeft="274.383330433816,589.93332516253">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,34.3999999006592"
-              Start="0,0"
-              End="0,26.8999999006592">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.8999999006592" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-25.08193359375,7.6184569815796,50.1638671875,11.6630859375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT - Load dim_product (SCD Type 1).Paths[OLE DB Source Output]"
-          TopLeft="402.799995112419,186.933331167698">
+          Id="Package\DFT - Load dim_product (SCD Type 2).Paths[OLE DB Source Output]"
+          TopLeft="398.799995172024,111.933332285285">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2176,44 +2308,8 @@ WHERE category IS NOT NULL;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT - Load dim_product (SCD Type 1).Paths[Lookup No Match Output1]"
-          TopLeft="426.599995355805,483.26666008532">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="88.5999982366959,71.0666658222676"
-              Start="0,0"
-              End="88.5999982366959,63.5666658222676">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,24.8143026879376" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,24.8143026879376"
-                    Point2="0,28.8143026879376"
-                    Point3="4,28.8143026879376" />
-                  <mssgle:LineSegment
-                    End="84.5999982366959,28.8143026879376" />
-                  <mssgle:CubicBezierSegment
-                    Point1="84.5999982366959,28.8143026879376"
-                    Point2="88.5999982366959,28.8143026879376"
-                    Point3="88.5999982366959,32.8143026879376" />
-                  <mssgle:LineSegment
-                    End="88.5999982366959,63.5666658222676" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-11.506387600402,33.8143026879376,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT - Load dim_product (SCD Type 1).Paths[Lookup No Match Output]"
-          TopLeft="351.266662568847,269.933329930902">
+          Id="Package\DFT - Load dim_product (SCD Type 2).Paths[Lookup No Match Output]"
+          TopLeft="347.266662628452,194.933331048489">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2248,44 +2344,44 @@ WHERE category IS NOT NULL;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT - Load dim_product (SCD Type 1).Paths[Lookup Match Output1]"
-          TopLeft="398.866662022471,483.26666008532">
+          Id="Package\DFT - Load dim_product (SCD Type 2).Paths[Lookup Match Output1]"
+          TopLeft="367.133328748742,408.266661202907">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-124.999998286366,65.0666650772095"
+              EndConnector="-99.2666649232303,67.0666650474076"
               Start="0,0"
-              End="-124.999998286366,57.5666650772095">
+              End="-99.2666649232303,59.5666650474076">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,28.5333325386048" />
+                    End="0,23.1924841919489" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,28.5333325386048"
-                    Point2="0,32.5333325386048"
-                    Point3="-4,32.5333325386048" />
+                    Point1="0,23.1924841919489"
+                    Point2="0,27.1924841919489"
+                    Point3="-4,27.1924841919489" />
                   <mssgle:LineSegment
-                    End="-120.999998286366,32.5333325386048" />
+                    End="-95.2666649232303,27.1924841919489" />
                   <mssgle:CubicBezierSegment
-                    Point1="-120.999998286366,32.5333325386048"
-                    Point2="-124.999998286366,32.5333325386048"
-                    Point3="-124.999998286366,36.5333325386048" />
+                    Point1="-95.2666649232303,27.1924841919489"
+                    Point2="-99.2666649232303,27.1924841919489"
+                    Point3="-99.2666649232303,31.1924841919489" />
                   <mssgle:LineSegment
-                    End="-124.999998286366,57.5666650772095" />
+                    End="-99.2666649232303,59.5666650474076" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-110.691385861933,37.5333325386048,96.3827734375,11.609375"
+              BoundingBox="-97.8247191803652,32.1924841919489,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT - Load dim_product (SCD Type 1).Paths[Lookup Match Output]"
-          TopLeft="423.533329235514,269.933329930902">
+          Id="Package\DFT - Load dim_product (SCD Type 2).Paths[Lookup Match Output]"
+          TopLeft="419.533329295119,194.933331048489">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2320,8 +2416,8 @@ WHERE category IS NOT NULL;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT - Load dim_product (SCD Type 1).Paths[Derived Column Output]"
-          TopLeft="279.466664779186,377.049994691461">
+          Id="Package\DFT - Load dim_product (SCD Type 2).Paths[Derived Column Output]"
+          TopLeft="275.466664838791,302.049995809048">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2341,11 +2437,97 @@ WHERE category IS NOT NULL;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - Load dim_product (SCD Type 2).Paths[Changed]"
+          TopLeft="268.383330523223,516.933326250315">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57.3999995579323"
+              Start="0,0"
+              End="0,49.8999995579323">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.8999995579323" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-19.8755078125,19.1184568102162,39.751015625,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\DFT - Load dim_product (SCD Type 2)\Derived Column 1"
+          TopLeft="454.999993219972,470.999992981553" />
+        <EdgeLayout
+          Id="Package\DFT - Load dim_product (SCD Type 2).Paths[Lookup No Match Output1]"
+          TopLeft="422.599995415409,408.266661202907">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="113.599997804563,62.7333317786461"
+              Start="0,0"
+              End="113.599997804563,55.2333317786461">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.4355145211602" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.4355145211602"
+                    Point2="0,25.4355145211602"
+                    Point3="4,25.4355145211602" />
+                  <mssgle:LineSegment
+                    End="109.599997804563,25.4355145211602" />
+                  <mssgle:CubicBezierSegment
+                    Point1="109.599997804563,25.4355145211602"
+                    Point2="113.599997804563,25.4355145211602"
+                    Point3="113.599997804563,29.4355145211602" />
+                  <mssgle:LineSegment
+                    End="113.599997804563,55.2333317786461" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0.993612183531404,30.4355145211602,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - Load dim_product (SCD Type 2).Paths[Derived Column Output1]"
+          TopLeft="536.199993249774,512.599992981553">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61.7333326280116"
+              Start="0,0"
+              End="0,54.2333326280116">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.2333326280116" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - Load dim_product (SCD Type 1)\Lookup dim_product">
+    design-time-name="Package\DFT - Load dim_product (SCD Type 2)\Lookup dim_product">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -2355,7 +2537,7 @@ WHERE category IS NOT NULL;</property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[dwh].[dim_product]</Value>
+          type="q3:string"></Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
@@ -2368,7 +2550,7 @@ WHERE category IS NOT NULL;</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Source">
+    design-time-name="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2381,12 +2563,12 @@ WHERE category IS NOT NULL;</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - Load dim_product (SCD Type 1)\Lookup  dim_product_category">
+    design-time-name="Package\DFT - Load dim_product (SCD Type 2)\Lookup  dim_product_category">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2396,7 +2578,7 @@ WHERE category IS NOT NULL;</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2404,7 +2586,7 @@ WHERE category IS NOT NULL;</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - Load dim_product (SCD Type 1)\OLE DB Destination">
+    design-time-name="Package\DFT - Load dim_product (SCD Type 2)\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2509,7 +2691,7 @@ WHERE category IS NOT NULL;</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2519,7 +2701,7 @@ WHERE category IS NOT NULL;</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
