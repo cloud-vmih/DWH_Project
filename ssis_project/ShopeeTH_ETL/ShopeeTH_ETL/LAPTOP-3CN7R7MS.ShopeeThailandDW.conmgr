@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="LAPTOP-3CN7R7MS.ShopeeThailandDW"
+  DTS:DTSID="{00FD643A-2181-4EA5-BBEB-51B842B7C71A}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=LAPTOP-3CN7R7MS;Initial Catalog=ShopeeThailandDW;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-ShopeeTH_ETL-{00FD643A-2181-4EA5-BBEB-51B842B7C71A}LAPTOP-3CN7R7MS.ShopeeThailandDW;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

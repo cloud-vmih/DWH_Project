@@ -12,8 +12,8 @@
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="16"
-  DTS:VersionGUID="{3093C9F4-D8FC-4F68-9C76-115780A74849}">
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{294D102D-E388-41C5-AD66-064E0FC1F2DD}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -2081,8 +2081,8 @@
               <connections>
                 <connection
                   refId="Package\DFT - Load Products\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[localhost.ShopeeThailandDW]"
-                  connectionManagerRefId="Package.ConnectionManagers[localhost.ShopeeThailandDW]"
+                  connectionManagerID="{00FD643A-2181-4EA5-BBEB-51B842B7C71A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LAPTOP-3CN7R7MS.ShopeeThailandDW]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2193,9 +2193,18 @@
                       scale="3" />
                     <externalMetadataColumn
                       refId="Package\DFT - Load Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
-                      dataType="wstr"
-                      length="10"
+                      dataType="dbDate"
                       name="created_at" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[raw_hash]"
+                      codePage="1252"
+                      dataType="str"
+                      length="64"
+                      name="raw_hash" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[staging_load_at]"
+                      dataType="dbTimeStamp"
+                      name="staging_load_at" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -2292,19 +2301,19 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="191.2,41.6"
+          Size="191,41.5"
           Id="Package\DFT - Load Order Items"
           TopLeft="273.57142915379,306.647058554742" />
         <NodeLayout
-          Size="165.6,41.6"
+          Size="165.5,41.5"
           Id="Package\DFT - Load Orders"
           TopLeft="493.571429622112,279.882352695849" />
         <NodeLayout
-          Size="174.4,41.6"
+          Size="174.5,41.5"
           Id="Package\DFT - Load Products"
           TopLeft="66.4285715699803,279.117646814166" />
         <NodeLayout
-          Size="196.8,41.6"
+          Size="197,41.5"
           Id="Package\EST - Truncate Staging"
           TopLeft="272.142857722178,143.764705756338" />
         <EdgeLayout
@@ -2506,13 +2515,13 @@
     design-time-name="Package\DFT - Load Products">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="150.4,41.6"
+          Size="150.5,41.5"
           Id="Package\DFT - Load Products\Flat File Source"
           TopLeft="324.285714976033,153.705882218212" />
         <NodeLayout
-          Size="170.4,41.6"
+          Size="170.5,41.5"
           Id="Package\DFT - Load Products\OLE DB Destination"
           TopLeft="312.142857807327,268.411764470609" />
         <EdgeLayout
@@ -2534,9 +2543,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
