@@ -12,8 +12,8 @@
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="5"
-  DTS:VersionGUID="{0EB33E0A-2E87-409E-8EFA-5BCDEB71D344}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{1935E52F-B3BD-4635-8C79-6759201110A5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -581,21 +581,21 @@ FROM (
         <NodeLayout
           Size="112.8,41.6"
           Id="Package\Data Flow Task\Lookup"
-          TopLeft="271.428572006372,214.882352752824" />
+          TopLeft="275.714286301209,155.235293981577" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="331.671429137825,98.9529411261985">
+          TopLeft="333.814286285243,98.9529411261985">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,115.929411626625"
+              EndConnector="0,56.2823528553788"
               Start="0,0"
-              End="0,108.429411626625">
+              End="0,48.7823528553788">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,108.429411626625" />
+                    End="0,48.7823528553788" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -607,28 +607,28 @@ FROM (
         <NodeLayout
           Size="170.4,41.6"
           Id="Package\Data Flow Task\OLE DB Destination"
-          TopLeft="242.142857658316,404.52941141012" />
+          TopLeft="246.428571953153,328.058823241855" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Lookup No Match Output]"
-          TopLeft="327.585714832344,256.482352752824">
+          TopLeft="331.871429127181,196.835293981577">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,148.047058657296"
+              EndConnector="0,131.223529260278"
               Start="0,0"
-              End="0,140.547058657296">
+              End="0,123.723529260278">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,140.547058657296" />
+                    End="0,123.723529260278" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-55.80638671875,64.4688418286482,111.6127734375,11.609375"
+              BoundingBox="-55.80638671875,56.0570771301391,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
